@@ -1,1 +1,11 @@
-this is the homepage
+<h1 align = 'center'>PULLMAN OR PAXTON</h1>
+
+<h3 align = 'center'><%= link_to 'Create New Scenario', new_scenario_path %></h3>
+
+<!-- need to be able to go to the new scenario page to create scenarios, and display -->
+
+<div class = 'scenario-list' align = 'center'>
+      <% @scenarios.each do |scenario| %>
+          <h2><%= link_to scenario.description, scenario_path(scenario) %></h2>
+      <% end %>
+</div>      

@@ -1,7 +1,6 @@
-class StatesController < ApplicationController
+class ScenariosController < ApplicationController
     
     before_action :set_scenario, only: [:edit, :update, :destroy, :show]
-    
     
     def index
       @scenarios = Scenario.all
@@ -12,16 +11,17 @@ class StatesController < ApplicationController
     end
     
     def create
-      @scenario = Scenario.new(state_params)
+      @scenario = Scenario.new(scenario_params)
       if @scenario.save
          flash[:success] = 'Scenario was successfully created'
-         redirect_to scenarios_index_path
+         redirect_to root_path
       else 
          render 'new'
       end
     end 
     
     def show
+        @comments = Comment.all
     end 
    
     def edit
@@ -30,7 +30,7 @@ class StatesController < ApplicationController
    def update
       if @scenario.update(scenario_params)
          flash[:success] = 'Scenario was successfully updated'
-         redirect_to scenarios_index_path
+         redirect_to root_path
       else 
          render 'edit'
       end
@@ -39,7 +39,7 @@ class StatesController < ApplicationController
    def destroy
       @scenario.destroy
       flash[:success] = 'Scenario was successfully deleted'
-      redirect_to scenarios_index_path
+      redirect_to root_path
    end    
     
     private 
