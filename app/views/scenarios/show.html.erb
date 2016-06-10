@@ -1,11 +1,14 @@
 <h3 align = 'center'><%= link_to 'Back to Home', root_path %></h3>
 
+<h2 align = 'center'>Scenario: <%= @scenario.description%></h2>
+
 <h3 align = 'center'>Comments:</h3>
 
 <!--loop and show all of the comments for this scenario-->
 <div class = 'scenario-list' align = 'center'>
       <% @comments.each do |comment| %>
-          <p><%= comment.text %></p>
+          <p><b><%=comment.user.username %>:</b> <%= comment.text %></p>
+          <!--<p></p>-->
       <% end %>
 </div>  
 

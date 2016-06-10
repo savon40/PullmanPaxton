@@ -22,7 +22,7 @@ class ScenariosController < ApplicationController
     end 
     
     def show
-        @comments = Comment.all
+        @comments = @scenario.comments
     end 
    
     def edit
