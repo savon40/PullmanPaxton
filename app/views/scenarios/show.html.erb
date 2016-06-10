@@ -5,13 +5,29 @@
 <h3 align = 'center'>Comments:</h3>
 
 <!--loop and show all of the comments for this scenario-->
-<div class = 'scenario-list' align = 'center'>
-      <% @comments.each do |comment| %>
-          <p><b><%=comment.user.username %>:</b> <%= comment.text %></p>
-          <!--<p></p>-->
-      <% end %>
-</div>  
+<% @comments.each do |comment|%>
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="well well-lg">
+                <div class="comment-body">
+                    <p><b><%=comment.user.username %>:</b> <%= comment.text %></p>
+                    <div class="comment-meta-details">
+                        <small><%= time_ago_in_words(comment.created_at) %> ago</small>
+                    </div>
+                </div>
+                <div class="article-actions right">
+                    <%= link_to "Edit this comment", edit_comment_path(comment), class: "btn btn-xs btn-xlarge" %>
+                    <%= link_to "Delete this comment", comment_path(comment), method: :delete,
+                            data: { confirm: "Are you sure you want to delete the comment?"},
+                            class: "btn btn-xs btn-xlarge" %>
+                </div>
+            </div>
+        </div>
+    </div>    
+<% end %> 
 
 <h3 align = 'center'>New Comment:</h3>
 <%= render 'comments/form' %>
+
+
 

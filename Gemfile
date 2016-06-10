@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'will_paginate', '3.0.7' # PAGINATION
 gem 'bootstrap-will_paginate', '0.0.10' # BOOTSTRAP STYLING
 gem 'bootstrap-sass', '~> 3.3.6' # BOOTSTRAP STYLING
-
+gem 'bcrypt', '~> 3.1.7' #PASSWORD DIGEST
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

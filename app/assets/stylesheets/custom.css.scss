@@ -1,2 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.wrap {width: 80%; margin: 0 auto;}
+.col-sm-8 {float: none !important; margin: 0 auto;}
+.col-sm-offset-2 {margin-right: 16.66667%;}
