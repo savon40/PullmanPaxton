@@ -12,6 +12,7 @@ class ScenariosController < ApplicationController
     
     def create
       @scenario = Scenario.new(scenario_params)
+      @scenario.user = User.first
       if @scenario.save
          flash[:success] = 'Scenario was successfully created'
          redirect_to root_path

@@ -4,8 +4,28 @@
 
 <!-- need to be able to go to the new scenario page to create scenarios, and display -->
 
+<h3 align = 'center'>Scenarios:</h3>
 <div class = 'scenario-list' align = 'center'>
-      <% @scenarios.each do |scenario| %>
-          <h2><%= link_to scenario.description, scenario_path(scenario) %></h2>
+      <% @scenarios.each do |scenario|%>
+          <div class="row">
+              <div class="col-xs-8 col-xs-offset-2">
+                  <div class="well well-lg">
+                      <div class="scenario-body">
+                           <%= link_to scenario.description, scenario_path(scenario) %>
+                          <div class="scenario-meta-details">
+                              <small>
+                                    Created by: <%= scenario.user.username if scenario.user %>, <%= time_ago_in_words(scenario.created_at) %> ago
+                              </small>
+                          </div>
+                      </div>
+                      <div class="scenario-actions right">
+                          <%= link_to "Edit Scenario", edit_scenario_path(scenario), class: "btn btn-xs btn-xlarge" %>
+                          <%= link_to "Delete Scenario", scenario_path(scenario), method: :delete,
+                                  data: { confirm: "Are you sure you want to delete the scenario?"},
+                                  class: "btn btn-xs btn-xlarge" %>
+                      </div>
+                  </div>
+              </div>
+          </div>    
       <% end %>
-</div>      
+</div>
