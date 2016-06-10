@@ -11,11 +11,12 @@ class CommentsController < ApplicationController
     end
     
     def create
-
       @comment = Comment.new(comment_params)
+      @comment.user = User.first
+      @comment.scenario = Scenario.first
       if @comment.save
          flash[:success] = 'Comment was successfully created'
-         redirect_to root_path
+         redirect_to scenario_path(@comment.scenario)
       else 
          render 'new'
       end
