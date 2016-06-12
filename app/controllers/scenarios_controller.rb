@@ -1,6 +1,8 @@
 class ScenariosController < ApplicationController
     
     before_action :set_scenario, only: [:edit, :update, :destroy, :show]
+    before_action :require_user, except: [:index, :show]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
     
     def index
       @scenarios = Scenario.all
@@ -12,7 +14,7 @@ class ScenariosController < ApplicationController
     
     def create
       @scenario = Scenario.new(scenario_params)
-      @scenario.user = User.first
+      @scenario.user = current_user
       if @scenario.save
          flash[:success] = 'Scenario was successfully created'
          redirect_to root_path
@@ -49,6 +51,11 @@ class ScenariosController < ApplicationController
       end
       def scenario_params
         params.require(:scenario).permit(:description, :user_id)
-      end    
-    
+      end  
+      def require_same_user
+        if current_user != @scenario.user
+            flash[:danger] = "You can only edit or delete your own scenarios"
+            redirect_to root_path
+        end
+      end
 end

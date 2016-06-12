@@ -15,12 +15,13 @@
                         <small><%= time_ago_in_words(comment.created_at) %> ago</small>
                     </div>
                 </div>
-                <div class="article-actions right">
-                    <%= link_to "Edit this comment", edit_comment_path(comment), class: "btn btn-xs btn-xlarge" %>
-                    <%= link_to "Delete this comment", comment_path(comment), method: :delete,
-                            data: { confirm: "Are you sure you want to delete the comment?"},
-                            class: "btn btn-xs btn-xlarge" %>
-                </div>
+                <% if logged_in? && current_user == comment.user %>
+                    <div class="comment-actions right">
+                        <%= link_to "Delete", comment_path(comment), method: :delete,
+                                data: { confirm: "Are you sure you want to delete the comment?"},
+                                class: "btn btn-xs btn-xlarge" %>
+                    </div>
+                <% end %>
             </div>
         </div>
     </div>    

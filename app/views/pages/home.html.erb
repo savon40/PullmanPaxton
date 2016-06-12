@@ -1,6 +1,13 @@
 <h1 align = 'center'>PULLMAN OR PAXTON</h1>
+<% if logged_in? %>
+    <h3 align = 'center'><%= link_to 'Logout', logout_path, method: :delete %></h3>
+<% else %>
+    <h3 align = 'center'><%= link_to 'Login', login_path %></h3>
+<% end %>
 
-<h3 align = 'center'><%= link_to 'Create New Scenario', new_scenario_path %></h3>
+<% if logged_in? %>
+    <h3 align = 'center'><%= link_to 'Create New Scenario', new_scenario_path %></h3>
+<% end %>
 
 <!-- need to be able to go to the new scenario page to create scenarios, and display -->
 
@@ -18,12 +25,14 @@
                               </small>
                           </div>
                       </div>
-                      <div class="scenario-actions right">
-                          <%= link_to "Edit Scenario", edit_scenario_path(scenario), class: "btn btn-xs btn-xlarge" %>
-                          <%= link_to "Delete Scenario", scenario_path(scenario), method: :delete,
-                                  data: { confirm: "Are you sure you want to delete the scenario?"},
-                                  class: "btn btn-xs btn-xlarge" %>
-                      </div>
+                      <% if logged_in? && current_user == scenario.user %>
+                          <div class="scenario-actions right">
+                              <%= link_to "Edit Scenario", edit_scenario_path(scenario), class: "btn btn-xs btn-xlarge" %>
+                              <%= link_to "Delete Scenario", scenario_path(scenario), method: :delete,
+                                      data: { confirm: "Are you sure you want to delete the scenario?"},
+                                      class: "btn btn-xs btn-xlarge" %>
+                          </div>
+                      <% end %>
                   </div>
               </div>
           </div>    
