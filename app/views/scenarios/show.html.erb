@@ -27,8 +27,9 @@
     </div>    
 <% end %> 
 
-<h3 align = 'center'>New Comment:</h3>
-<%= render 'comments/form' %>
-
+<% if logged_in? %>
+    <h3 align = 'center'>New Comment:</h3>
+    <%= render 'comments/form' %>
+<% end %>
 
 
