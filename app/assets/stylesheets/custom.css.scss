@@ -7,3 +7,10 @@
 
 // SCENARIO SHOW PAGE
 .comment-actions.right {margin-left: -7px;}
+
+
+//mobile responsive
+@media only screen and (max-width: 600px) {
+    .col-xs-offset-2 {margin-left: 0;}
+    .col-xs-8 {width: 100%}
+}
