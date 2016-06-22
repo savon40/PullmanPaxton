@@ -7,6 +7,8 @@ gem 'bootstrap-will_paginate', '0.0.10' # BOOTSTRAP STYLING
 gem 'bootstrap-sass', '~> 3.3.6' # BOOTSTRAP STYLING
 gem 'bcrypt', '~> 3.1.7' #PASSWORD DIGEST
 
+gem 'sucker_punch', '~> 2.0' #BACKGROUND JOB ENQUEUE
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 

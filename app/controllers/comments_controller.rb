@@ -19,6 +19,8 @@ class CommentsController < ApplicationController
       #@comment.scenario = Scenario.first
       if @comment.save
          flash[:success] = 'Comment was successfully created'
+         
+         EmailUser.perform_later(@comment.scenario) #call background job to send email
          redirect_to scenario_path(@comment.scenario)
       else 
          render 'new'
